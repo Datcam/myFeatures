@@ -1,0 +1,21 @@
+//this function takes an array as an argument,
+//randomizes it and returns a new array with the values of the original array
+//in random order
+function myrand(arr) {
+    let randomArray = [];
+    let usedItem = [];
+    let max = arr.length;
+    let min = 0;
+
+    while (usedItem.length !== max) {
+        let randomNumber = Math.trunc(Math.random() * (max - min) + min);
+        if (usedItem.indexOf(randomNumber) === -1) {
+            usedItem.push(randomNumber);
+            randomArray.push(arr[randomNumber]);
+        }
+    }
+
+    return randomArray;
+}
+
+console.log(myrand([1, 2, 3, 4, 5]));
