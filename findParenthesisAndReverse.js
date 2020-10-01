@@ -14,6 +14,7 @@ function reverseInParentheses(inputString) {
             if (!isOpenCloseParenthesis) {
                 if (stringLetters.length > 0) {
                     resultedString = resultedString + stringLetters.split('').reverse().join('') + inputString[i];
+                    stringLetters = '';
                 }
             }
         } else if (isOpenCloseParenthesis) {
@@ -30,3 +31,16 @@ function reverseInParentheses(inputString) {
 
 // reverseInParentheses('hello (I am(from Odessa)and(I am(good))(developer))(Have a good)day');
 reverseInParentheses('Hello ((myskaM ma I ,))');
+
+
+// Second dession
+function reverseInParentheses(s) {
+    var reverse = (str) => str.split('').reverse().join('');
+
+    while (s.includes('(')) {
+        var l = s.lastIndexOf('(');
+        var r = s.indexOf(')', s.lastIndexOf('('));
+        s = s.slice(0, l) + reverse(s.slice(l + 1, r)) + (r + 1 === s.length ? s.slice(r, -1) : s.slice(r + 1));
+    }
+    return s;
+}
